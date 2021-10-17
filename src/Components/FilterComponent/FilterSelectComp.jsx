@@ -1,9 +1,9 @@
 import React from 'react'
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
-
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
+import { filterOptions } from '../../services/helpers';
 
 
 export default function FilterSelectComp(props) {
@@ -23,9 +23,9 @@ export default function FilterSelectComp(props) {
           label="Filter todos"
           onChange = {handleFilter}
         >
-          <MenuItem value="All">All</MenuItem>
-          <MenuItem value="Archived">Archived</MenuItem>
-          <MenuItem value="Active">Active</MenuItem>
+          <MenuItem value={filterOptions.ALL}>All</MenuItem>
+          <MenuItem value={filterOptions.ARCHIVED}>Archived</MenuItem>
+          <MenuItem value={filterOptions.ACTIVE}>Active</MenuItem>
         </Select>
       </FormControl>
     )

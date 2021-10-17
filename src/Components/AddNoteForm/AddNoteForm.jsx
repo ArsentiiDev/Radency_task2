@@ -26,15 +26,14 @@ const initialValues = {
 
 }
 
-
 export default function AddNoteForm(props) {
 
-    const {  recordForEdit,setOpen } = props
+    const { recordForEdit, setOpen } = props
     const [values, setValues] = useState(initialValues)
     const dispatch = useDispatch()
     console.log(values)
-    const  record = useSelector(state => 
-    state.records.find(todo => todo.id === recordForEdit))
+    const record = useSelector(state =>
+        state.records.find(todo => todo.id === recordForEdit))
 
     const handleInputchange = (e) => {
         const { name, value } = e.target
@@ -46,22 +45,20 @@ export default function AddNoteForm(props) {
     }
 
     useEffect(() => {
-        if (recordForEdit)
-        {
+        if (recordForEdit) {
             setValues({
                 ...record
             })
 
         }
 
-    }, [recordForEdit,record])
-
+    }, [recordForEdit, record])
 
 
     const handleSubmitForm = (e) => {
         e.preventDefault()
-        if(recordForEdit){
-            console.log('values',values)
+        if (recordForEdit) {
+            console.log('values', values)
             dispatch(updateTodo(values))
             setOpen(false)
             return
@@ -83,24 +80,19 @@ export default function AddNoteForm(props) {
 
     }
 
-
     return (
         <Box component="form"
             sx={{
                 width: '100%',
                 margin: theme.spacing(1)
             }}
-            //onSubmit = {handleSubmit}
             onSubmit={handleSubmitForm}
-
         >
             <CssBaseline />
             <Grid container
                 justifyContent="center"
-
                 spacing={2}
                 sx={{
-
                     bgColor: 'primary',
                 }}
             >
@@ -126,7 +118,6 @@ export default function AddNoteForm(props) {
                             display: 'flex',
                             justifyContent: 'center'
                         }}
-
                     >
                         <InputLabel id="demo-simple-select-label">Choose Category</InputLabel>
                         <Select
@@ -135,7 +126,6 @@ export default function AddNoteForm(props) {
                             id="demo-simple-select"
                             onChange={handleInputchange}
                             value={values.category}
-
                         >
                             <MenuItem value="Qoute">Qoute</MenuItem>
                             <MenuItem value="Random Thought">Random Thought</MenuItem>
@@ -148,10 +138,8 @@ export default function AddNoteForm(props) {
                     <TextField
                         variant="filled"
                         margin="normal"
-                        //fullWidth
                         name="content"
                         label="Content"
-                        //type="text"
                         id="content"
                         multiline
                         rows={4}
@@ -159,8 +147,6 @@ export default function AddNoteForm(props) {
                         value={values.content}
                     />
                 </Grid>
-
-
                 <ButtonComponent
                     type="submit"
                     fullWidth
